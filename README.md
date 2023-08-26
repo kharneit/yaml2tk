@@ -40,6 +40,7 @@ have a further look at [tkinter's documentation](https://docs.python.org/3/libra
 ### Example config.yaml
 ```
 id: 'main'
+bind_to: 'main_window'
 children_loader: 'pack'
 children:
 -
@@ -105,6 +106,25 @@ if __name__ == '__main__':
 This returns an instanciated WindowHandler object with every attribute you defined as a bind_to to on any object
 in your configuration. You can access it by `content.BIND_TO_ARGUMENT.object`. Besides that, `content.data` contains
 every attribute you described for this object in you config file.
+
+### Example
+Considering the following segments of the former examples:
+```
+id: 'main'
+...
+children:
+-
+  id: 'left'
+  module: 'Frame'
+  bind_to: 'frame_left'
+  ...
+```
+and
+```
+content = WindowHandler(CONFIG_PATH)
+```
+you could acces the frames tkinter object by calling `content.frame_left.object` as well as all its
+initialization data by calling `content.frame_left.data`
 
 ---
 
