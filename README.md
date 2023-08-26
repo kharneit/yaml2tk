@@ -113,8 +113,9 @@ every attribute you described for this object in you config file.
 |module|tkinter module to load for this object(Tk, Frame, Label, Entry, Listbox, List, Button, ...)[^1] |
 |bind_to|content.ATTRIBUTE to associate this object with |
 |arguments|dictionary of initializations arguments of the class set in module, be aware of compatibility between the attribute and the class |
-|sequence_methods|dictionary with method:arguments pairs that are applied to the instanciated module object |
+|sequence_methods|dictionary or list of dictionaries with method:arguments pairs that are applied to the instanciated module object [^2]|
 |post_hook|same, but applied after all childrens are processed |
 |children_loader| | loader to use to load children |
 |*loader*| Internal arguments that is set to the parends children_loader element when children are instanciated and thats actually processed by the build method|
 [^1]: When instanciating the root element, these arguments are overridden by the needed arguments to spawn the main window
+[^2]: If you want to call the same method multiple times on the same object, you have to pass the sequence_methods as a list and not a nested dictionary. Else, the argument will be overwritten.
