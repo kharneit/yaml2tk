@@ -13,7 +13,7 @@ Support package for tkinter to define basic user-interfaces in yaml
   - Internal arguments
   - Tkinter-basics
     - Structure
-    - Instanciating an element
+    - instantiating an element
     - Displaying an object
 - Usage
   - Creating a window
@@ -67,7 +67,7 @@ are bound to their master-element up until they reach the root element of the st
 your main window. The form of this structure is reflected in your config file, as you 
 create your root element, add children elements and expand those children further.
 
-### Instanciating an object
+### instantiating an object
 
 When creating a tkinter object you always need to pass its master-element and further
 optional arguments, like background color or text. Some other parameters are set by directly 
@@ -75,9 +75,9 @@ accessing the objects element or using methods of the object.
 This resembles the following elements of the configuration:
 |argument|description|
 |-|-|
-|**`module`**|Refers to the tkinter-subclass you want to instanciate the object with, like Frame or Label.[^1] **Mandatory** on any element except for window-elements|
-|*`arguments`*| Dictionary of key-value-pairs that it used to instanciate the object. The master argument is supplied automaticly according to the structure of the config file.|
-|*`attributes`*| are attributes that are directly set on the instanciated objects.|
+|**`module`**|Refers to the tkinter-subclass you want to instantiate the object with, like Frame or Label.[^1] **Mandatory** on any element except for window-elements|
+|*`arguments`*| Dictionary of key-value-pairs that it used to instantiate the object. The master argument is supplied automaticly according to the structure of the config file.|
+|*`attributes`*| are attributes that are directly set on the instantiated objects.|
 |*`sequence_methods`*| A dictionary or a list with key:value pairs that resemble called method: arguments. If you want to apply the same method multiple times, you need to pass the arguments as a list of dictionaries.| 
 |*`post_hook`*| Like `sequence_methods` but it is applied after all children are processed.
 
@@ -162,7 +162,7 @@ def build():
 > key will be overwritten by the last entry in your configuration.
 
 ## Implementation
-You can instanciate the window like in this example:
+You can instantiate the window like in this example:
 ```
 from yaml2tk.ClassesUI import WindowBuilder
 
@@ -171,7 +171,7 @@ CONFIG_PATH = '/path/to/configuration/file.yaml'
 if __name__ == '__main__':
   content = WindowHandler(CONFIG_PATH)
 ```
-This returns an instanciated `WindowHandler` object with every attribute you defined as a bind_to to on any object
+This returns an instantiated `WindowHandler` object with every attribute you defined as a bind_to to on any object
 in your configuration. You can access it by `content.BIND_TO_ARGUMENT.object`. Besides that, `content.data` contains
 every attribute you described for this object in you config file.
 
@@ -209,9 +209,9 @@ the class `ElementUI` (or one of it's ancestors) to ensure compatibility with th
 |module|tkinter module to load for this object(Tk, Frame, Label, Entry, Listbox, List, Button, ...)[^1] |
 |bind_to|content.ATTRIBUTE to associate this object with |
 |arguments|dictionary of initializations arguments of the class set in module, be aware of compatibility between the attribute and the class |
-|sequence_methods|dictionary or list of dictionaries with method:arguments pairs that are applied to the instanciated module object [^2]|
+|sequence_methods|dictionary or list of dictionaries with method:arguments pairs that are applied to the instantiated module object [^2]|
 |post_hook|same, but applied after all childrens are processed |
 |children_loader|  Loader to apply on any child element |
-|*loader*| Internal arguments that is set to the parends children_loader element when children are instanciated and thats actually processed by the build method|
-[^1]: When instanciating the root element, these arguments are overridden by the needed arguments to spawn the main window
+|*loader*| Internal arguments that is set to the parends children_loader element when children are instantiated and thats actually processed by the build method|
+[^1]: When instantiating the root element, these arguments are overridden by the needed arguments to spawn the main window
 [^2]: If you want to call the same method multiple times on the same object, you have to pass the sequence_methods as a list and not a nested dictionary. Else, the argument will be overwritten.
