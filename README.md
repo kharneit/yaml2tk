@@ -88,8 +88,8 @@ def build():
 > this module instead uses `children_loader` arguments, to set it once for all children, as all children elements
 > anyways must use the same loader.
 
-> On some tkinter method calls for the loader, like column- or rowconfigure, you might have multiple method calls
-> applied to the same object. In this case, you need to pass the sequence_methods argument as a list, else the dictionary
+> On some tkinter method calls for the loader, like `columnconfigure` or `rowconfigure`, you might have multiple method calls
+> applied to the same object. In this case, you need to pass the `sequence_methods` argument as a list, else the dictionary
 > key will be overwritten by the last entry in your configuration.
 
 ## Implementation
